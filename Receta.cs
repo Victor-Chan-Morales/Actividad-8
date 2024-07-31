@@ -21,7 +21,7 @@ namespace Actividad_8
         {
             Console.Clear();
             Console.Write("Ingrese el nombre de la receta: ");
-            string nombreReceta = Console.ReadLine();
+            string nombreReceta = Console.ReadLine().ToUpper();
             double tiempoReceta;
             while (true)
             {
@@ -42,7 +42,7 @@ namespace Actividad_8
         {
             Console.Clear();
             Console.WriteLine("Ingrese el nombre de la receta a buscar");
-            string nombreABuscar=Console.ReadLine();
+            string nombreABuscar=Console.ReadLine().ToUpper();
             Receta verificarReceta=lista.Find(c=>c.Nombre.Equals(nombreABuscar));
             if (verificarReceta != null)
             {
@@ -55,6 +55,7 @@ namespace Actividad_8
         }
         public static void MostrarRecetas(List<Receta>lista)
         {
+            Console.Clear();
             Console.WriteLine("RECETAS DISPONIBLES");
            foreach (Receta rec in lista)
            {
