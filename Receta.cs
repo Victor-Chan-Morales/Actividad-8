@@ -52,7 +52,15 @@ namespace Actividad_8
                 Console.WriteLine("El producto no se encuentra registrado");
             }
         }
-
+        public void MostrarRecetas(List<Receta>lista)
+        {
+            Console.BackgroundColor = ConsoleColor.Green;
+            Console.WriteLine("RECETAS DISPONIBLES");
+           foreach (Receta rec in lista)
+           {
+               Console.WriteLine($"* Nombre de la receta: {rec.Nombre} y un tiempo de preparación de: {rec.TiempoPreparación}");
+           }  
+        }
     }
 
 
