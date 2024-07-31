@@ -8,8 +8,8 @@ namespace Actividad_8
 {
     public class Receta
     {
-        string Nombre { get; set; }
-        double TiempoPreparación { get; set; }
+        public string Nombre { get; set; }
+        public double TiempoPreparación { get; set; }
 
         public Receta(string nombre, double tiempoPreparación)
         {
@@ -17,15 +17,16 @@ namespace Actividad_8
             TiempoPreparación = tiempoPreparación;
         }
         
-       public void PedirDatos()
+       public static Receta PedirDatos()
         {
-            Console.BackgroundColor = ConsoleColor.Green;
-            Console.WriteLine("Ingrese el nombre de la receta: ");
+            Console.Clear();
+            Console.Write("Ingrese el nombre de la receta: ");
             string nombreReceta = Console.ReadLine();
+            double tiempoReceta;
             while (true)
             {
-                Console.WriteLine("Ingrese el tiempo de preparación en minutos");
-                double tiempoReceta=double.Parse(Console.ReadLine());
+                Console.Write("Ingrese el tiempo de preparación en minutos: ");
+                tiempoReceta=double.Parse(Console.ReadLine());
                 if (tiempoReceta < 0)
                 {
                     Console.WriteLine("No puede agregar un tiempo menor o igual a cero.");
@@ -35,30 +36,29 @@ namespace Actividad_8
                     break;
                 }
             }
+            return new Receta(nombreReceta,tiempoReceta);
         }
-        public void BuscarReceta(List<Receta>lista)
+        public static void BuscarReceta(List<Receta>lista)
         {
             Console.Clear();
-            Console.BackgroundColor = ConsoleColor.Green;
             Console.WriteLine("Ingrese el nombre de la receta a buscar");
             string nombreABuscar=Console.ReadLine();
             Receta verificarReceta=lista.Find(c=>c.Nombre.Equals(nombreABuscar));
             if (verificarReceta != null)
             {
-                Console.WriteLine($"El producto {nombreABuscar} se encuentra registrado y tiene un tiempo de preparación de {verificarReceta.TiempoPreparación}");
+                Console.WriteLine($"El producto {nombreABuscar} se encuentra registrado y tiene un tiempo de preparación de {verificarReceta.TiempoPreparación} minutos");
             }
             else
             {
                 Console.WriteLine("El producto no se encuentra registrado");
             }
         }
-        public void MostrarRecetas(List<Receta>lista)
+        public static void MostrarRecetas(List<Receta>lista)
         {
-            Console.BackgroundColor = ConsoleColor.Green;
             Console.WriteLine("RECETAS DISPONIBLES");
            foreach (Receta rec in lista)
            {
-               Console.WriteLine($"* Nombre de la receta: {rec.Nombre} y un tiempo de preparación de: {rec.TiempoPreparación}");
+               Console.WriteLine($"* Nombre de la receta: {rec.Nombre} con un tiempo de preparación de: {rec.TiempoPreparación} minutos");
            }  
         }
     }
